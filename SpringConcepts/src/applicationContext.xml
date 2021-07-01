@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+
+	<context:property-placeholder location="classpath:PremiumValues.properties"/>
+	<bean id="myFortune" class="com.lakkam.springdemo.HappyFortuneService" />
+    <context:annotation-config />
+
+
+	<bean id="myBaseballCoach"
+		class="com.lakkam.springdemo.BaseballCoach">
+		<constructor-arg ref="myFortune"></constructor-arg>
+	</bean>
+	
+	<bean id="myTrackCoach" class="com.lakkam.springdemo.TrackCoach">
+	<constructor-arg ref="myFortune"></constructor-arg>
+	</bean>
+	
+	<!-- <bean id="premiumService" class="com.lakkam.springdemo.insurance.PremiumServiceImpl">
+	
+	<property name="carPremium" value="${carInsurancePremium}"></property>
+	</bean> -->
+	
+	<bean id="premiumService" class="com.lakkam.springdemo.insurance.PremiumServiceImpl"></bean>
+	<bean id="creditScoreService" class="com.lakkam.springdemo.insurance.CreditScoreServiceImple"></bean>
+	<bean id="insuranceBean" class="com.lakkam.springdemo.insurance.AutoInsurance">
+ 	
+	</bean>
+	
+	<bean id="homeInsuranceBean" class="com.lakkam.springdemo.insurance.HomeInsurance">
+	</bean>
+
+
+</beans>
